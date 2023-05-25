@@ -1,5 +1,7 @@
 package com.example.Biblioteca.Servicios;
 
+import java.util.List;
+
 public interface ServicioBase<E> {
 
     public List<E> buscarTodos() throws Exception;

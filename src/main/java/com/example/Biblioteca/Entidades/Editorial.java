@@ -3,27 +3,37 @@ package com.example.Biblioteca.Entidades;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name ="Editorial")
+@Entity/* indica que la clase es una entidad. */
+/*
+ * Una entidad es la representación de información que nosotros necesitamos en
+ * nuestra aplicación.
+ * Esta entidad podría ser un usuario, un producto o cualquier dato que nuestra
+ * aplicación necesita
+ */
+@Table(name ="Editorial")/* indica que la clase es una tabla(similar a una tabla de excel). */
 public class Editorial {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Id/* indica que la variable es una id(similar a una tabla de excel). */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)/* indica el valor de la variable(codigo,numero). */
+    private Integer id;/* indica que la variable es int(numero) y privado. */
     @Column(name = "Nombre", unique =true)
 
     private String nombre;
     @Column(name = "Descripcion")
     private String description;
 
+
+    /* Constructor lleno */
     public Editorial(Integer id, String nombre, String description) {
         this.id = id;
         this.nombre = nombre;
         this.description = description;
     }
-
+    /* Constructor vacio */
     public Editorial() {
     }
+
+    /* setters(asignadores) y getters(buscadores) */
 
     public Integer getId() {
         return id;
