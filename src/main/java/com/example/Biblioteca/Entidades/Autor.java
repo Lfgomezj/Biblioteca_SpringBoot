@@ -1,39 +1,30 @@
 package com.example.Biblioteca.Entidades;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
-@Entity /* indica que la clase es una entidad. */
-/*
- * Una entidad es la representación de información que nosotros necesitamos en
- * nuestra aplicación.
- * Esta entidad podría ser un usuario, un producto o cualquier dato que nuestra
- * aplicación necesita
- */
-
-@Table(name = "Autor") /* indica que la clase es una tabla(similar a una tabla de excel). */
+@Entity
+@Table(name = "Autor")
 public class Autor {
 
-    @Id /* indica que la variable es una id(similar a una tabla de excel). */
-    @GeneratedValue(strategy = GenerationType.IDENTITY) /* indica el valor de la variable(codigo,numero). */
-    private Integer id;/* indica que la variable es int(numero) y privado. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "Nombre", unique = true)
 
-    @Column(name = "Nombre", unique = true) /*
-                                             * nos permitirá definir aspectos sobre las columnas de la base de datos de
-                                             * la base de datos como lo es el nombre, la longitud, constrains, etc.
-                                             */
-    private String nombre; /* indica que la variable es String(letras) y privado. */
+    private String nombre;
 
-    @Column(name = "Apellidoo") /* nos permitirá definir aspectos sobre las columnas */
-    private String apellido;/* indica que la variable es String(letras) y privado. */
-    @Column(name = "Pseudonimo") /* nos permitirá definir aspectos sobre las columnas */
-    private String pseudonimo;/* indica que la variable es String(letras) y privado. */
+    @Column(name = "Apellido")
+    private String apellido;
+    @Column(name = "Pseudonimo", unique = true)
+    private String pseudonimo;
 
-    @Column(name = "Nacionalidad") /* nos permitirá definir aspectos sobre las columnas */
-    private String nacionalidad;/* indica que la variable es String(letras) y privado. */
-    @Column(name = "Email") /* nos permitirá definir aspectos sobre las columnas */
-    private String email;/* indica que la variable es String(letras) y privado. */
+    @Column(name = "Nacionalidad")
+    private String nacionalidad;
 
-    /* Constructor lleno */
+    @Column(name = "Email")
+    @Email
+    private String email;
 
     public Autor(Integer id, String nombre, String apellido, String pseudonimo, String nacionalidad, String email) {
         this.id = id;
@@ -44,12 +35,9 @@ public class Autor {
         this.email = email;
 
     }
-    /* Constructor vacio */
 
     public Autor() {
     }
-
-    /* setters(asignadores) y getters(buscadores) */
 
     public Integer getId() {
         return id;
